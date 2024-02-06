@@ -2,7 +2,8 @@ import './App.css';
 import * as React from 'react';
 import {
     Box, Image, Text, Container, Button, Center, Slider, SliderTrack,
-    SliderFilledTrack, SliderThumb, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue, AvatarGroup
+    SliderFilledTrack, SliderThumb, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue,
+    AvatarGroup, Link, Divider
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import BaoDaoLOGO from './components/BaoDao-Talk_LOGO.png';
@@ -45,7 +46,18 @@ const Homepage = () => {
     const Specially_BP_TA = useBreakpointValue({ base: '', md: 'center' });
     const Specially_BP_M = useBreakpointValue({ base: '', md: '123px' });
     const Specially_BP_pl = useBreakpointValue({ base: '16px', md: '88px' });
-
+    const AboutBaoDao_BP_bgcenter = useBreakpointValue({ base: '75% center', md: '' });
+    const AboutBaoDao_BP_W = useBreakpointValue({ base: '', md: '50%' });
+    const AboutBaoDao_BP_pb = useBreakpointValue({ base: '12px', md: '20px' });
+    const AboutBaoDao_BP_pl = useBreakpointValue({ base: '16px', md: '32px' });
+    const AboutBaoDao_BP_pl2 = useBreakpointValue({ base: '', md: '32px' });
+    const AboutBaoDao_BP_wordsize = useBreakpointValue({ base: '20px', md: '32px' });
+    const Bottom_BP_pt = useBreakpointValue({ base: '16px', md: '40px' });
+    const Bottom_BP_pt2 = useBreakpointValue({ base: '16px', md: '' });
+    const Bottom_BP_pr = useBreakpointValue({ base: '', md: '40px' });
+    const Bottom_BP_pr2 = useBreakpointValue({ base: '', md: '117px' });
+    const Bottom_BP_W = useBreakpointValue({ base: '', md: '318px' });
+    const Bottom_BP_ML = useBreakpointValue({ base: '', md: 'auto' });
 
 
 
@@ -75,18 +87,18 @@ const Homepage = () => {
 
 
                     <Box display={{ base: 'none', md: 'block' }} flexDirection='row' gap='6px'>
-                        <Button bg='#FFF'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='500' fontSize='16px'>
-                                Find tutors
-                            </Text>
-                        </Button>
-                        <Button bg='#FFF'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='500' fontSize='16px'>
-                                Become a tutor
-                            </Text>
-                        </Button>
+
+                        <Link color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='500' fontSize='16px' pr='32px'>
+                            Find tutors
+                        </Link>
+
+
+                        <Link color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='500' fontSize='16px' pr='14px'>
+                            Become a tutor
+                        </Link>
+
                         <Menu>
-                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} bg='#FFF' >
+                            <MenuButton as={Button} rightIcon={<ChevronDownIcon w='24px' h='24px' />} bg='#FFF' >
                                 <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='500' fontSize='16px'>
                                     English
                                 </Text>
@@ -95,6 +107,7 @@ const Homepage = () => {
                                 <MenuItem>繁體中文</MenuItem>
                             </MenuList>
                         </Menu>
+
                         <Button w='118px' h='38px' bg='#7156E5' borderRadius='4px' justifyContent='center' alignContent='center'>
                             <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px'>
                                 Log in
@@ -106,7 +119,7 @@ const Homepage = () => {
             </Container>
 
             {/* Online Mandarin Learning至Women圖片 */}
-            <Container bg={Top_BP_Bc} maxW={BreakPoint} display='flex' padding='0px 0px 0px 0px' pos='relative'>
+            <Container bg={Top_BP_Bc} maxW={BreakPoint} display='flex' padding='0px 0px 0px 0px' >
 
                 {/* Online Mandarin Learning文字 */}
                 <Box display={{ base: 'block', md: 'none' }}>
@@ -140,51 +153,53 @@ const Homepage = () => {
                     </Center>
 
                     <Box>
-                        <Image width="100%" height="100%" src={Women_phone}></Image>
+                        <Image width="100%" height="100%" src={Women}></Image>
                     </Box>
                 </Box>
 
-                <Box display={{ base: 'none', md: 'block' }} marginLeft='auto'>
-                    <Box h='100%' width="70%" marginLeft='auto'  >
-                        <Image width="100%" height="100%" src={Women} ></Image>
-                    </Box>
+                <Box display={{ base: 'none', md: 'block' }} >
+                    <Box display='flex' margin='42px' >
 
-                    <Box width='603px' height='396px' bg='#FFF' position='absolute' top='25px' left='3%' borderRadius='8px' >
-                        <Box pt='40px' pl='32px' pb='12px' >
-                            <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='24px'>
-                                Online Mandarin Learning
-                            </Text>
-                        </Box>
-                        <Box pl='32px' pb='20px' >
-                            <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='48px'>
-                                Learn Once,<br></br>Use Anywhere
-                            </Text>
-                        </Box>
-                        <Box pl='32px' pr='48px' pb='24px' >
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px'>
-                                Join BaoDao Talk today to immerse yourself in the language and culture simultaneously
-                            </Text>
-                        </Box>
-                        <Box display='flex' flexDirection='row'>
-                            <Box pl='32px' >
-                                <Button w='150px' h='48px' bg='#7156E5' borderRadius='4px' >
-                                    <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='15px'>
-                                        Get Started
-                                    </Text>
-                                </Button>
+                        <Box width='100%' bg='#FFF' p="40px 27px" >
+                            <Box >
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='32px'>
+                                    Online Mandarin Learning
+                                </Text>
                             </Box>
-                            <Box pl='24px' >
-                                <Button w='174px' h='48px' bg='#F5F6F9' borderRadius='4px' >
-                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px' pr='7px'>
-                                        How it works
-                                    </Text>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" >
-                                        <path d="M9 18L15 12L9 6" stroke="#313030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </Button>
+                            <Box pt='8px' pb='12px' >
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='48px'>
+                                    Learn Once, Use Anywhere
+                                </Text>
+                            </Box>
+                            <Box pb='24px' >
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px'>
+                                    Join BaoDao Talk today to immerse yourself in the language and culture simultaneously
+                                </Text>
+                            </Box>
+                            <Box display='flex' flexDirection='row'>
+                                <Box  >
+                                    <Button w='150px' h='48px' bg='#7156E5' borderRadius='4px' >
+                                        <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='15px'>
+                                            Get Started
+                                        </Text>
+                                    </Button>
+                                </Box>
+                                <Box pl='24px' >
+                                    <Button w='174px' h='48px' bg='#F5F6F9' borderRadius='4px' >
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px' pr='7px'>
+                                            How it works
+                                        </Text>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" >
+                                            <path d="M9 18L15 12L9 6" stroke="#313030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </Button>
+                                </Box>
                             </Box>
                         </Box>
 
+                        <Box width='100%' >
+                            <Image src={Women_phone} ></Image>
+                        </Box>
                     </Box>
                 </Box>
 
@@ -560,6 +575,7 @@ const Homepage = () => {
                         Specially designed interactive materials for students at all levels
                     </Text>
                 </Box>
+
                 <Box display='flex' flexDirection='row' justifyContent={Specially_BP_TA} >
                     <Box display='flex' flexDirection='column' w='100%' h='100%' marginRight={Specially_BP_M}>
                         {/* 台灣飲食文化圖片 */}
@@ -637,47 +653,141 @@ const Homepage = () => {
             </Container>
 
             {/* About BaoDao Talk */}
-            <Container bgImage={Bobotea} backgroundSize="cover" backgroundPosition="75% center" backgroundRepeat="no-repeat" pt='24px' pb='24px'>
+            <Container bgImage={Bobotea} backgroundSize="cover" backgroundPosition={AboutBaoDao_BP_bgcenter} backgroundRepeat="no-repeat" pt={Boost_BP_pb} pb={Boost_BP_pb} pl={AboutBaoDao_BP_pl2} maxW={BreakPoint} >
 
-                <Box pt='24px' pb='24px' display='flex' bg='rgba(255, 255, 255, 0.95)' borderRadius='8px' flexDirection='column'>
+                <Box pt='24px' pb='24px' display='flex' bg='rgba(255, 255, 255, 0.95)' borderRadius='8px' flexDirection='column' w={AboutBaoDao_BP_W}>
                     {/* About BaoDao Talk 文字*/}
-                    <Box pl='16px' pr='16px' pb='12px'>
-                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='20px' >
+                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb='12px'>
+                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={AboutBaoDao_BP_wordsize} >
                             About BaoDao Talk
                         </Text>
                     </Box>
 
                     {/* "寶島..." 文字*/}
-                    <Box pl='16px' pr='16px' pb='12px'>
+                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb={AboutBaoDao_BP_pb}>
                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
                             "寶島 BaoDao" means "beautiful and rich island" which is another name represents Taiwan.
                         </Text>
                     </Box>
 
                     {/* "We promote Taiwanese..." 文字*/}
-                    <Box pl='16px' pr='16px' pb='12px'>
+                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb={AboutBaoDao_BP_pb}>
                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
                             We promote Taiwanese culture and Mandarin, offering professional Mandarin learning services to help people know more about Taiwan, and experience its unique culture.
                         </Text>
                     </Box>
 
                     {/* "Join us in embracing..." 文字*/}
-                    <Box pl='16px' pr='16px'>
+                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb={AboutBaoDao_BP_pb}>
                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
                             Join us in embracing the beauty of Taiwan and sharing the spirit of "BaoDao" with the world.
                         </Text>
                     </Box>
 
+                    <Box pl={AboutBaoDao_BP_pl} display={{ base: 'none', md: 'block' }}>
+                        <Button w='300px' h='48px' bg='#7156E5' borderRadius='4px' >
+                            <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                Start learning
+                            </Text>
+                        </Button>
+                    </Box>
+
+
                 </Box>
 
                 {/* Get Started 按鈕 */}
-                <Center pt='24px'>
-                    <Button w='288px' h='32px' bg='#7156E5' borderRadius='4px'>
+                <Center pt='24px' >
+                    <Button display={{ base: 'block', md: 'none' }} w='288px' h='32px' bg='#7156E5' borderRadius='4px'>
                         <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='13px'>
                             Get Started
                         </Text>
                     </Button>
                 </Center>
+
+            </Container>
+
+            {/* 底層 */}
+            <Container maxW={BreakPoint} bg='#F5F6F9' pt={Bottom_BP_pt} pl={Bottom_BP_pt} pb={Bottom_BP_pt} pr={Bottom_BP_pr} >
+                <Box display='flex' flexDirection={WellAndSelected_BP_FD}>
+                    <Box>
+                        <Image src={BaoDaoLOGO} alt="BaoDao Logo" />
+                    </Box>
+
+                    <Box display='flex' flexDirection={WellAndSelected_BP_FD} marginLeft='auto'>
+                        <Box display='flex' pt={Bottom_BP_pt2} flexDirection='column' marginRight='78px'>
+                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px' pb='8px'>
+                                Learn More
+                            </Text>
+                            <Box >
+                                <Link color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' opacity='0.8'>
+                                    About us
+                                </Link>
+                            </Box>
+                            <Box>
+                                <Link color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' opacity='0.8'>
+                                    FAQs
+                                </Link>
+                            </Box>
+                        </Box >
+
+                        <Box display='flex' pt={Bottom_BP_pt2} flexDirection='column' marginRight='78px'>
+                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px' pb='8px'>
+                                Legal
+                            </Text>
+                            <Box>
+                                <Link color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' opacity='0.8'>
+                                    Terms of Use
+                                </Link>
+                            </Box>
+                            <Box>
+                                <Link color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' opacity='0.8'>
+                                    Privacy Policy
+                                </Link>
+                            </Box>
+                        </Box >
+
+                        <Box display='flex' pt={Bottom_BP_pt2} flexDirection='column' pr={Bottom_BP_pr2}>
+                            <Box>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px' pb='8px'>
+                                    Contacts
+                                </Text>
+                            </Box>
+                            <Box>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' pb='8px' opacity='0.8'>
+                                    Shang Chin Education and Training Co., Ltd.
+                                </Text>
+                            </Box>
+                            <Box w={Bottom_BP_W}>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' pb='8px' opacity='0.8'>
+                                    2 F., No. 250, Zhishan Rd., Xiping Vil., Xitun Dist., Taichung City 407036, Taiwan (R.O.C.)
+                                </Text>
+                            </Box>
+                            <Box>
+                                <Link color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' opacity='0.8'>
+                                    Email us
+                                </Link>
+                            </Box>
+                        </Box >
+                    </Box>
+                </Box>
+
+                <Divider pt='20px' />
+
+                <Box display='flex' flexDirection={WellAndSelected_BP_FD} >
+                    <Box display='flex' pt='20px' flexDirection='column'>
+                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' opacity='0.8'>
+                            © 2024 BaoDao Talk company Limited
+                        </Text>
+                    </Box>
+
+                    <Box as='button' display='flex' pt='20px' flexDirection='column' marginLeft={Bottom_BP_ML}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect opacity="0.15" x="0.75" y="0.75" width="30.5" height="30.5" rx="15.25" stroke="#0A142F" stroke-width="1.5" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4003 22.1534V15.9991H13.1279V13.8782H14.4003V12.6048C14.4003 10.8746 15.1188 9.8457 17.1601 9.8457H18.8595V11.9668H17.7972C17.0026 11.9668 16.9501 12.2632 16.9501 12.8164L16.9472 13.8779H18.8715L18.6463 15.9988H16.9472V22.1534H14.4003Z" fill="#6F6E6E" />
+                        </svg>
+                    </Box>
+                </Box>
+
 
             </Container>
         </>
