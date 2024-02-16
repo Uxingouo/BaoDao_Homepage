@@ -1,24 +1,22 @@
 import './App.css';
 import * as React from 'react';
 import {
-    Box, Image, Text, Container, Button, Center, Slider, SliderTrack,
-    SliderFilledTrack, SliderThumb, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue,
+    Box, Image, Text, Container, Button, Center, Menu, MenuButton, MenuList, MenuItem,
     AvatarGroup, Link, Divider
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons'
-import BaoDaoLOGO from './components/BaoDao-Talk_LOGO.png';
-import ShortGuy from './components/shortguy.png';
-import ShortGuyCercle from './components/shortguycercle.png';
-import HiTeacher from './components/HiTeacher.png';
-import TaiwanFoodculture from './components/TaiwanFoodculture_2.png';
-import Bobotea from './components/Bobotea.png';
-import Women from './components/Women.png';
-import Women_phone from './components/Women_phone.png';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Scrollbar } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import '@fontsource/poppins';
+import '@fontsource/roboto';
 
 
 const Homepage = () => {
 
-    const BreakPoint = useBreakpointValue({ base: 'md', md: '100%' });
+    /*const BreakPoint = useBreakpointValue({ base: 'md', md: '100%' });
     const BaoDaoLogo_BP_W = useBreakpointValue({ base: '118px', md: '160px' });
     const BaoDaoLogo_BP_H = useBreakpointValue({ base: '42px', md: '58px' });
     const BaoDaoLogo_BP_pl = useBreakpointValue({ base: '9px', md: '40px' });
@@ -57,25 +55,23 @@ const Homepage = () => {
     const Bottom_BP_pr = useBreakpointValue({ base: '', md: '40px' });
     const Bottom_BP_pr2 = useBreakpointValue({ base: '', md: '117px' });
     const Bottom_BP_W = useBreakpointValue({ base: '', md: '318px' });
-    const Bottom_BP_ML = useBreakpointValue({ base: '', md: 'auto' });
-
-
+    const Bottom_BP_ML = useBreakpointValue({ base: '', md: 'auto' });*/
 
 
     return (
         <>
             {/* 頁面頂部 */}
-            <Container display='flex' height='80px' maxW={BreakPoint} padding='0px 0px 0px 0px'>
+            <Container display='flex' height='80px' maxW={{ base: 'md', md: '100%' }} padding='0px 0px 0px 0px'>
 
                 {/* 頁面頂部BaoDaoLOGO */}
-                <Box my='auto' pl={BaoDaoLogo_BP_pl}>
+                <Box my='auto' pl={{ base: '9px', md: '40px' }}>
                     <Box>
-                        <Image width={BaoDaoLogo_BP_W} height={BaoDaoLogo_BP_H} src={BaoDaoLOGO} alt="BaoDao Logo" />
+                        <Image width={{ base: '118px', md: '160px' }} height={{ base: '42px', md: '58px' }} src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/navbar-logo.png" />
                     </Box>
                 </Box>
 
                 {/* 頁面頂部右上角三條線SVG */}
-                <Box flexDirection='row' marginLeft='auto' my='auto' display='flex' pr={Top_BP_pr}>
+                <Box flexDirection='row' marginLeft='auto' my='auto' display='flex' pr={{ base: '18px', md: '40px' }}>
 
                     <Box display={{ base: 'block', md: 'none' }} >
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
@@ -119,7 +115,7 @@ const Homepage = () => {
             </Container>
 
             {/* Online Mandarin Learning至Women圖片 */}
-            <Container bg={Top_BP_Bc} maxW={BreakPoint} display='flex' padding='0px 0px 0px 0px' >
+            <Container bg={{ base: '#FFF', md: '#F5F6F9' }} maxW={{ base: 'md', md: '100%' }} display='flex' padding='0px 0px 0px 0px' justifyContent='center'>
 
                 {/* Online Mandarin Learning文字 */}
                 <Box display={{ base: 'block', md: 'none' }}>
@@ -153,14 +149,15 @@ const Homepage = () => {
                     </Center>
 
                     <Box>
-                        <Image width="100%" height="100%" src={Women}></Image>
+                        <Image width="100%" height="100%" src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section1_Women_Mobile.png"></Image>
                     </Box>
                 </Box>
 
-                <Box display={{ base: 'none', md: 'block' }} >
-                    <Box display='flex' margin='42px' >
 
-                        <Box width='100%' bg='#FFF' p="40px 27px" >
+                <Box display={{ base: 'none', md: 'block' }} >
+                    <Box display='flex' margin='42px' maxW='1358px' >
+
+                        <Box width='100%' p="40px 27px" display='flex' flexDirection='column' justifyContent='center'>
                             <Box >
                                 <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='32px'>
                                     Online Mandarin Learning
@@ -185,7 +182,7 @@ const Homepage = () => {
                                     </Button>
                                 </Box>
                                 <Box pl='24px' >
-                                    <Button w='174px' h='48px' bg='#F5F6F9' borderRadius='4px' >
+                                    <Button w='174px' h='48px' bg='#F5F6F9' borderRadius='4px' border='1px'>
                                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px' pr='7px'>
                                             How it works
                                         </Text>
@@ -198,7 +195,7 @@ const Homepage = () => {
                         </Box>
 
                         <Box width='100%' >
-                            <Image src={Women_phone} ></Image>
+                            <Image src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section1_Women_Desktop.png" ></Image>
                         </Box>
                     </Box>
                 </Box>
@@ -206,7 +203,7 @@ const Homepage = () => {
             </Container>
 
             {/* A boead....文字 至 Find tutors按鈕 */}
-            <Container maxW={BreakPoint} padding='0px 0px 0px 0px'>
+            <Container maxW={{ base: 'md', md: '100%' }} padding='0px 0px 0px 0px'>
 
                 {/* A boead....文字 */}
                 <Box padding='24px 12px 24px 16px' display={{ base: 'block', md: 'none' }} >
@@ -268,85 +265,1078 @@ const Homepage = () => {
                 </Center>
             </Container>
 
-            <Container maxW={BreakPoint} padding='0px 40px 0px 40px' display='flex' gap='53px' >
+            <Container display={{ base: 'block', md: 'none' }} >
+                <Container padding='0px 40px 0px 40px' display='flex' height='400px' maxW='md'>
+
+                    <Swiper pagination={{ dynamicBullets: true, }} modules={[Pagination]} className="mySwiper">
+                        <SwiperSlide>
+                            <Box display='flex' justifyContent='center'>
+                                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                                    <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                        <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                            Dobby Potter
+                                        </Text>
+                                    </Box>
+
+                                    {/* 哈比人下面 */}
 
 
-                {/* 影片圖框 */}
-
-                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%'>
-                    <Image width='100%' src={ShortGuy}></Image>
-
-                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
-                        <Image pr='11.72px' flexShrink='0' src={ShortGuyCercle}></Image>
-                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
-                            Dobby Potter
-                        </Text>
-                    </Box>
-
-                    {/* 哈比人下面 */}
-
-
-                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
-                                TOCEL
-                            </Text>
-                        </Box>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                                Bussiness
-                            </Text>
-                        </Box>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                                Travel
-                            </Text>
-                        </Box>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                                Business
-                            </Text>
-                        </Box>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                                Travel
-                            </Text>
-                        </Box>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                                Travel
-                            </Text>
-                        </Box>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                                Travel
-                            </Text>
-                        </Box>
-                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                                Travel
-                            </Text>
-                        </Box>
-                    </AvatarGroup>
+                                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                                TOCEL
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Bussiness
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Business
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                    </AvatarGroup>
 
 
-                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
-                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
-                            Trial from
-                        </Text>
-                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
-                            33 Points
-                        </Text>
-                    </Box>
-                </Box>
+                                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                            Trial from
+                                        </Text>
+                                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                            33 Points
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
 
+                        <SwiperSlide>
+                            <Box display='flex' justifyContent='center'>
+                                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                                    <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                        <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                            Dobby Potter
+                                        </Text>
+                                    </Box>
+
+                                    {/* 哈比人下面 */}
+
+
+                                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                                TOCEL
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Bussiness
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Business
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                    </AvatarGroup>
+
+
+                                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                            Trial from
+                                        </Text>
+                                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                            33 Points
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <Box display='flex' justifyContent='center'>
+                                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                                    <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                        <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                            Dobby Potter
+                                        </Text>
+                                    </Box>
+
+                                    {/* 哈比人下面 */}
+
+
+                                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                                TOCEL
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Bussiness
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Business
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                    </AvatarGroup>
+
+
+                                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                            Trial from
+                                        </Text>
+                                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                            33 Points
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <Box display='flex' justifyContent='center'>
+                                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                                    <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                        <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                            Dobby Potter
+                                        </Text>
+                                    </Box>
+
+                                    {/* 哈比人下面 */}
+
+
+                                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                                TOCEL
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Bussiness
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Business
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                    </AvatarGroup>
+
+
+                                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                            Trial from
+                                        </Text>
+                                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                            33 Points
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <Box display='flex' justifyContent='center'>
+                                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                                    <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                        <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                            Dobby Potter
+                                        </Text>
+                                    </Box>
+
+                                    {/* 哈比人下面 */}
+
+
+                                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                                TOCEL
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Bussiness
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Business
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                    </AvatarGroup>
+
+
+                                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                            Trial from
+                                        </Text>
+                                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                            33 Points
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <Box display='flex' justifyContent='center'>
+                                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                                    <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                        <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                            Dobby Potter
+                                        </Text>
+                                    </Box>
+
+                                    {/* 哈比人下面 */}
+
+
+                                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                                TOCEL
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Bussiness
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Business
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                    </AvatarGroup>
+
+
+                                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                            Trial from
+                                        </Text>
+                                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                            33 Points
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+
+                        <SwiperSlide>
+                            <Box display='flex' justifyContent='center'>
+                                <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                                    <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                                    <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                        <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                            Dobby Potter
+                                        </Text>
+                                    </Box>
+
+                                    {/* 哈比人下面 */}
+
+
+                                    <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                                TOCEL
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Bussiness
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Business
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                        <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                                Travel
+                                            </Text>
+                                        </Box>
+                                    </AvatarGroup>
+
+
+                                    <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                        <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                            Trial from
+                                        </Text>
+                                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                            33 Points
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+
+
+                    </Swiper>
+
+                </Container>
             </Container>
+
+            <Container display={{ base: 'none', md: 'block' }} pb='29px' maxW='100%' w='1500px'>
+                <Container display='flex' gap='53px' flexWrap='wrap' maxW='100%' justifyContent='center'>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='center'>
+                        <Box border='1px' borderColor='#E5E5E5' borderRadius='8px' overflow='hidden' width='300px' height='100%' display='flex' flexDirection='column'>
+                            <Image w='100%' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy.png"></Image>
+
+                            <Box pl='12px' pt='12px' display='flex' alignItems='center'>
+                                <Image pr='11.72px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section2_Shortguy_Cercle.png"></Image>
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
+                                    Dobby Potter
+                                </Text>
+                            </Box>
+
+                            {/* 哈比人下面 */}
+
+
+                            <AvatarGroup pt='12px' pl='12px' pr='12px' gap='20px' flexWrap='wrap' max={4} size='sm' color='#6F6E6E' flexDirection='row-reverse'>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px' >
+                                        TOCEL
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Bussiness
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Business
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                                <Box bg='#F5F6F9' padding='4px 16px' borderRadius='4px'>
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                        Travel
+                                    </Text>
+                                </Box>
+                            </AvatarGroup>
+
+
+                            <Box pl='12px' pt='19px' pb='12px' display='flex' alignItems='center' gap='10px'>
+                                <Text color='#929292' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='14px'>
+                                    Trial from
+                                </Text>
+                                <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize='18px'>
+                                    33 Points
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Box>
+
+
+                </Container>
+            </Container>
+
 
             <Container>
                 {/* Find tutors 按鈕 */}
-                <Center pt='29px' pb='24px'>
-                    <Button w='288px' h='32px' bg='#F5F6F9' borderRadius='4px'>
-                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='13px'>
+                <Center pt='10px' pb='24px'>
+                    <Button w={{ base: '288px', md: '300px' }} h={{ base: '32px', md: '48px' }} bg='#F5F6F9' borderRadius='4px'>
+                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize={{ base: '13px', md: '15px' }}>
                             Find tutors
                         </Text>
                     </Button>
@@ -355,19 +1345,19 @@ const Homepage = () => {
             </Container>
 
             {/* Why learn ....文字 至 Start learning 按鈕*/}
-            <Container pt={Whylearn_BP_pt} pl='16px' pr='12px' pb={Whylearn_BP_pb} bg='#F5F6F9' maxW={BreakPoint}>
+            <Container pt={{ base: '24px', md: '48px' }} pl='16px' pr='12px' pb={{ base: '24px', md: '48px' }} bg='#F5F6F9' maxW={{ base: 'md', md: '100%' }}>
 
                 {/* Why learn with BaoDao Talk 文字 */}
-                <Box display='flex' justifyContent='center' alignItems='center' bg='#F5F6F9' pb={Boost_BP_pb}>
-                    <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={Whylearn_BP_FS}>
+                <Box display='flex' justifyContent='center' alignItems='center' bg='#F5F6F9' pb={{ base: '24px', md: '40px' }}>
+                    <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={{ base: '20px', md: '32px' }}>
                         Why learn with BaoDao Talk
                     </Text>
                 </Box>
 
                 {/* Well-structured Courses 文字 */}
-                <Box display='flex' flexDirection={WellAndSelected_BP_FD} justifyContent={WellAndSelected_BP_JC} pb={Select_BP_pb}>
+                <Box display='flex' flexDirection={{ base: 'column', md: 'row' }} justifyContent={{ base: '', md: 'center' }} pb={{ base: '', md: '40px' }}>
 
-                    <Box display='flex' flexShrink='0' pb={WellAndSelected_BP_pb} marginRight={WellAndSelected_BP_MR} >
+                    <Box display='flex' flexShrink='0' pb={{ base: '24px', md: '' }} marginRight={{ base: '0px', md: '148px' }} >
                         <Box display='flex' pr="16px" flexShrink='0'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none">
                                 <g>
@@ -380,7 +1370,7 @@ const Homepage = () => {
                                 </g>
                             </svg>
                         </Box>
-                        <Box display='flex' flexDirection='column' w={Whylearn_BP_boxsize}>
+                        <Box display='flex' flexDirection='column' w={{ base: '', md: '357px' }}>
                             <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px'>
                                 Well-structured Courses
                             </Text>
@@ -391,7 +1381,7 @@ const Homepage = () => {
                     </Box>
 
                     {/* Selected Tutors 文字 */}
-                    <Box display='flex' flexShrink='0' pb={WellAndSelected_BP_pb}>
+                    <Box display='flex' flexShrink='0' pb={{ base: '24px', md: '' }}>
                         <Box display='flex' pr="16px" flexShrink='0'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none">
                                 <g>
@@ -404,7 +1394,7 @@ const Homepage = () => {
                                 </g>
                             </svg>
                         </Box>
-                        <Box display='flex' flexDirection='column' w={Whylearn_BP_boxsize}>
+                        <Box display='flex' flexDirection='column' w={{ base: '', md: '357px' }}>
                             <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px'>
                                 Selected Tutors
                             </Text>
@@ -416,8 +1406,8 @@ const Homepage = () => {
                 </Box>
 
                 {/* Interactive Learning 文字 */}
-                <Box display='flex' flexDirection={WellAndSelected_BP_FD} justifyContent={WellAndSelected_BP_JC} pb={Boost_BP_pb}>
-                    <Box display='flex' flexShrink='0' pb='24px' marginRight={WellAndSelected_BP_MR}>
+                <Box display='flex' flexDirection={{ base: 'column', md: 'row' }} justifyContent={{ base: '', md: 'center' }} pb={{ base: '24px', md: '40px' }}>
+                    <Box display='flex' flexShrink='0' pb='24px' marginRight={{ base: '0px', md: '148px' }}>
 
                         <Box display='flex' pr="16px" flexShrink='0'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none">
@@ -431,7 +1421,7 @@ const Homepage = () => {
                                 </g>
                             </svg>
                         </Box>
-                        <Box display='flex' flexDirection='column' w={Whylearn_BP_boxsize}>
+                        <Box display='flex' flexDirection='column' w={{ base: '', md: '357px' }}>
                             <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px'>
                                 Interactive Learning
                             </Text>
@@ -456,7 +1446,7 @@ const Homepage = () => {
                                 </g>
                             </svg>
                         </Box>
-                        <Box display='flex' flexDirection='column' w={Whylearn_BP_boxsize}>
+                        <Box display='flex' flexDirection='column' w={{ base: '', md: '357px' }}>
                             <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px'>
                                 Boost your Mandarin learning journey
                             </Text>
@@ -469,8 +1459,8 @@ const Homepage = () => {
 
                 {/* Start learning 按鈕 */}
                 <Center>
-                    <Button w={Startlearning_BP_W} h={Startlearning_BP_H} bg='#FE9000' borderRadius='4px'>
-                        <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize={Startlearning_BP_FS}>
+                    <Button w={{ base: '288px', md: '300px' }} h={{ base: '32px', md: '48px' }} bg='#FE9000' borderRadius='4px'>
+                        <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize={{ base: '13px', md: '15px' }}>
                             Start learning
                         </Text>
                     </Button>
@@ -479,22 +1469,22 @@ const Homepage = () => {
             </Container>
 
             {/* Book your lesson ....文字 至 Book your lesson now 按鈕*/}
-            <Container flexShrink='0' pt={Bookyour_BP_pt} pl='16px' pb={Whylearn_BP_pb} maxW={BreakPoint}>
+            <Container flexShrink='0' pt={{ base: '24px', md: '48px' }} pl='16px' pb={{ base: '24px', md: '48px' }} maxW={{ base: 'md', md: '100%' }}>
 
                 {/* Book your lesson... 文字 */}
-                <Box display='flex' justifyContent='center' alignItems='center' pb={Whylearn_BP_pb} pr='18px' pos='positive'>
-                    <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={Bookyour_BP_FS} >
+                <Box display='flex' justifyContent='center' alignItems='center' pb={{ base: '24px', md: '48px' }} pr='18px' pos='positive'>
+                    <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={{ base: '20px', md: '32px' }} >
                         Book your lesson in 3 easy steps with BaoDao Talk
                     </Text>
                 </Box>
 
                 {/* 嗨老師 圖片 */}
-                <Box display='flex' flexDirection={WellAndSelected_BP_FD} justifyContent={WellAndSelected_BP_JC} >
-                    <Image w={HiTeacher_BP_W} h={HiTeacher_BP_H} flexShrink='0' src={HiTeacher} marginRight={HiTeacher_BP_MR} pb={Boost_BP_pb}></Image>
+                <Box display='flex' flexDirection={{ base: 'column', md: 'row' }} justifyContent={{ base: '', md: 'center' }} >
+                    <Image maxW={{ base: '', md: '487px' }} maxH={{ base: '', md: '394px' }} flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section4_HiTeacher.png" marginRight={{ base: '0px', md: '100px' }} pb={{ base: '24px', md: '40px' }}></Image>
 
                     {/* Choose a tutor 文字 */}
                     <Box>
-                        <Box display='flex' flexShrink='0' pb={Whylearn_BP_pb} pr='13px' w={Bookyour_BP_boxsize}>
+                        <Box display='flex' flexShrink='0' pb={{ base: '24px', md: '48px' }} pr='13px' w={{ base: '', md: '448px' }}>
 
                             <Box display='flex' pr="16px" flexShrink='0'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none">
@@ -514,7 +1504,7 @@ const Homepage = () => {
                         </Box>
 
                         {/* Select a time and schedule a class 文字 */}
-                        <Box display='flex' flexShrink='0' pb={Whylearn_BP_pb} pr='13px' w={Bookyour_BP_boxsize}>
+                        <Box display='flex' flexShrink='0' pb={{ base: '24px', md: '48px' }} pr='13px' w={{ base: '', md: '448px' }}>
 
                             <Box display='flex' pr="16px" flexShrink='0'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none">
@@ -534,7 +1524,7 @@ const Homepage = () => {
                         </Box>
 
                         {/* Top-up your points 文字 */}
-                        <Box display='flex' flexShrink='0' pb='24px' pr='13px' w={Bookyour_BP_boxsize}>
+                        <Box display='flex' flexShrink='0' pb='24px' pr='13px' w={{ base: '', md: '448px' }}>
 
                             <Box display='flex' pr="16px" flexShrink='0'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none">
@@ -557,8 +1547,8 @@ const Homepage = () => {
 
                 {/* Book your lesson now 按鈕 */}
                 <Center>
-                    <Button w={Startlearning_BP_W} h={Startlearning_BP_H} bg='#7156E5' borderRadius='4px'>
-                        <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize={Startlearning_BP_FS}>
+                    <Button w={{ base: '288px', md: '300px' }} h={{ base: '32px', md: '48px' }} bg='#7156E5' borderRadius='4px'>
+                        <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize={{ base: '13px', md: '15px' }}>
                             Book your lesson now
                         </Text>
                     </Button>
@@ -567,124 +1557,184 @@ const Homepage = () => {
             </Container>
 
             {/* Specially designed interactive ....文字 至 Rectangle*/}
-            <Container flexShrink='0' pt={Bookyour_BP_pt} pl={Specially_BP_pl} pr={Specially_BP_pl} pb={Whylearn_BP_pb} maxW={BreakPoint}>
+            <Container flexShrink='0' pt={{ base: '24px', md: '48px' }} pl={{ base: '16px', md: '88px' }} pr={{ base: '16px', md: '88px' }} pb={{ base: '24px', md: '48px' }} maxW={{ base: 'md', md: '100%' }}>
 
                 {/* Specially designed interactive... 文字 */}
-                <Box display='flex' justifyContent='center' alignItems='center' pb={Whylearn_BP_pb} >
-                    <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={Bookyour_BP_FS}>
+                <Box display='flex' justifyContent='center' alignItems='center' pb={{ base: '24px', md: '48px' }} >
+                    <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={{ base: '20px', md: '32px' }}>
                         Specially designed interactive materials for students at all levels
                     </Text>
                 </Box>
+                <Container display={{ base: 'block', md: 'none' }} maxW={{ base: 'md', md: '100%' }}>
+                    <Swiper scrollbar={{ draggable: true }} modules={[Scrollbar]} className="mySwiper">
+                        <SwiperSlide>
+                            <Box display='flex' flexDirection='row'  >
+                                <Box display='flex' flexDirection='column' w='100%' h='100%' marginRight={{ base: '', md: '123px' }}>
+                                    {/* 台灣飲食文化圖片 */}
+                                    <Image borderRadius='8px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section5_TaiwanFoodculture.png"></Image>
 
-                <Box display='flex' flexDirection='row' justifyContent={Specially_BP_TA} >
-                    <Box display='flex' flexDirection='column' w='100%' h='100%' marginRight={Specially_BP_M}>
-                        {/* 台灣飲食文化圖片 */}
-                        <Image border='1px' borderRadius='8px' shadow='0px 4px 10px 0px' flexShrink='0' src={TaiwanFoodculture}></Image>
+                                    {/* Spiral curriculum design 文字 */}
+                                    <Box display='flex' pt='24px' pb='12px' >
+                                        <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
+                                            Spiral curriculum design
+                                        </Text>
+                                    </Box>
 
-                        {/* Spiral curriculum design 文字 */}
-                        <Box display='flex' pt='24px' pb='12px' >
-                            <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
-                                Spiral curriculum design
-                            </Text>
-                        </Box>
-
-                        {/* Integrating and expanding ...文字 */}
-                        <Box display='flex' alignItems='center' pb='24px' >
-                            <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' textAlign={Specially_BP_TA}>
-                                Integrating and expanding new and old concepts for complete understanding
-                            </Text>
-                        </Box>
-                    </Box>
-
-                    <Box display={{ base: 'none', md: 'block' }} marginRight={Specially_BP_M}>
-                        <Box display='flex' flexDirection='column' w='100%' h='100%' >
-                            {/* 台灣飲食文化圖片 */}
-                            <Image border='1px' borderRadius='8px' shadow='0px 4px 10px 0px' flexShrink='0' src={TaiwanFoodculture}></Image>
-
-                            {/* Spiral curriculum design 文字 */}
-                            <Box display='flex' pt='24px' pb='12px' >
-                                <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
-                                    Spiral curriculum design
-                                </Text>
+                                    {/* Integrating and expanding ...文字 */}
+                                    <Box display='flex' alignItems='center' pb='24px' >
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' textAlign={{ base: '', md: 'center' }}>
+                                            Integrating and expanding new and old concepts for complete understanding
+                                        </Text>
+                                    </Box>
+                                </Box>
                             </Box>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Box marginRight={{ base: '', md: '123px' }}>
+                                <Box display='flex' flexDirection='column' w='100%' h='100%' >
+                                    {/* 台灣飲食文化圖片 */}
+                                    <Image borderRadius='8px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section5_TaiwanTroditionalclothies.jpg"></Image>
 
-                            {/* Integrating and expanding ...文字 */}
-                            <Box display='flex' alignItems='center' pb='24px' >
-                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' textAlign={Specially_BP_TA}>
-                                    Integrating and expanding new and old concepts for complete understanding
-                                </Text>
+                                    {/* Spiral curriculum design 文字 */}
+                                    <Box display='flex' pt='24px' pb='12px' >
+                                        <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
+                                            Traditional Mandarin Mastery
+                                        </Text>
+                                    </Box>
+
+                                    {/* Integrating and expanding ...文字 */}
+                                    <Box display='flex' alignItems='center' pb='24px' >
+                                        <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' textAlign={{ base: '', md: 'center' }}>
+                                            Immersion in Taiwan culture and life. Bringing everyday conversations to life through practical learning.
+                                        </Text>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Box display='flex' flexDirection='column' w='100%' h='100%'>
+                                {/* 台灣飲食文化圖片 */}
+                                <Image borderRadius='8px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section5_HeIsHoXian.png"></Image>
+
+                                {/* Spiral curriculum design 文字 */}
+                                <Box display='flex' pt='24px' pb='12px' >
+                                    <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
+                                        Building solid foundations
+                                    </Text>
+                                </Box>
+
+                                {/* Integrating and expanding ...文字 */}
+                                <Box display='flex' alignItems='center' pb='24px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' textAlign={{ base: '', md: 'center' }}>
+                                        Transforming short-Term memory into long-term knowledge
+                                    </Text>
+                                </Box>
+                            </Box>
+                        </SwiperSlide>
+                    </Swiper>
+                </Container>
+
+                <Container display={{ base: 'none', md: 'block' }} maxW={{ base: 'md', md: '100%' }}>
+                    <Container display='flex' maxW='100%' maxH='100%' textAlign='center' gap='123px'>
+
+                        <Box display='flex' flexDirection='row' w='100%' h='100%' >
+                            <Box display='flex' flexDirection='column'  >
+                                {/* 台灣飲食文化圖片 */}
+                                <Image borderRadius='8px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section5_TaiwanFoodculture.png"></Image>
+
+                                {/* Spiral curriculum design 文字 */}
+                                <Box display='flex' pt='24px' pb='12px' justifyContent='center'>
+                                    <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
+                                        Spiral curriculum design
+                                    </Text>
+                                </Box>
+
+                                {/* Integrating and expanding ...文字 */}
+                                <Box display='flex' alignItems='center' pb='24px' >
+                                    <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
+                                        Integrating and expanding new and old concepts for complete understanding
+                                    </Text>
+                                </Box>
                             </Box>
                         </Box>
-                    </Box>
 
-                    <Box display={{ base: 'none', md: 'block' }}>
+
                         <Box display='flex' flexDirection='column' w='100%' h='100%'>
                             {/* 台灣飲食文化圖片 */}
-                            <Image border='1px' borderRadius='8px' shadow='0px 4px 10px 0px' flexShrink='0' src={TaiwanFoodculture}></Image>
+                            <Image borderRadius='8px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section5_TaiwanTroditionalclothies.jpg"></Image>
 
                             {/* Spiral curriculum design 文字 */}
-                            <Box display='flex' pt='24px' pb='12px' >
+                            <Box display='flex' pt='24px' pb='12px' justifyContent='center'>
                                 <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
-                                    Spiral curriculum design
+                                    Traditional Mandarin Mastery
                                 </Text>
                             </Box>
 
                             {/* Integrating and expanding ...文字 */}
                             <Box display='flex' alignItems='center' pb='24px' >
-                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' textAlign={Specially_BP_TA}>
-                                    Integrating and expanding new and old concepts for complete understanding
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
+                                    Immersion in Taiwan culture and life. Bringing everyday conversations to life through practical learning.
                                 </Text>
                             </Box>
                         </Box>
-                    </Box>
-                </Box>
 
-                <Box display={{ base: 'block', md: 'none' }}>
-                    <Box display='flex' alignItems='center' justifyContent='center' pb='43px' >
-                        <Slider aria-label='slider-ex-1' defaultValue={30}>
-                            <SliderTrack>
-                                <SliderFilledTrack />
-                            </SliderTrack>
-                            <SliderThumb />
-                        </Slider>
-                    </Box>
-                </Box>
 
-            </Container>
+                        <Box display='flex' flexDirection='column' w='100%' h='100%'>
+                            {/* 台灣飲食文化圖片 */}
+                            <Image borderRadius='8px' flexShrink='0' src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section5_HeIsHoXian.png"></Image>
+
+                            {/* Spiral curriculum design 文字 */}
+                            <Box display='flex' pt='24px' pb='12px' justifyContent='center'>
+                                <Text color='#7156E5' fontFamily='Poppins' fontStyle='normal' fontWeight='500' fontSize='20px' >
+                                    Building solid foundations
+                                </Text>
+                            </Box>
+
+                            {/* Integrating and expanding ...文字 */}
+                            <Box display='flex' alignItems='center' pb='24px' >
+                                <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
+                                    Transforming short-Term memory into long-term knowledge
+                                </Text>
+                            </Box>
+                        </Box>
+                    </Container>
+                </Container>
+
+            </Container >
 
             {/* About BaoDao Talk */}
-            <Container bgImage={Bobotea} backgroundSize="cover" backgroundPosition={AboutBaoDao_BP_bgcenter} backgroundRepeat="no-repeat" pt={Boost_BP_pb} pb={Boost_BP_pb} pl={AboutBaoDao_BP_pl2} maxW={BreakPoint} >
+            < Container bgImage="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/homepage/Section6_TwoWomen.png" backgroundSize="cover" backgroundPosition={{ base: '75% center', md: 'top' }} backgroundRepeat="no-repeat" pt={{ base: '24px', md: '40px' }} pb={{ base: '24px', md: '40px' }} pl={{ base: '', md: '32px' }} maxW={{ base: 'md', md: '100%' }} >
 
-                <Box pt='24px' pb='24px' display='flex' bg='rgba(255, 255, 255, 0.95)' borderRadius='8px' flexDirection='column' w={AboutBaoDao_BP_W}>
+                <Box pt='24px' pb='24px' display='flex' bg='rgba(255, 255, 255, 0.95)' borderRadius='8px' flexDirection='column' w={{ base: '', md: '50%' }}>
                     {/* About BaoDao Talk 文字*/}
-                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb='12px'>
-                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={AboutBaoDao_BP_wordsize} >
+                    <Box pl={{ base: '16px', md: '32px' }} pr='16px' pb='12px'>
+                        <Text color='#313030' fontFamily='Poppins' fontStyle='normal' fontWeight='700' fontSize={{ base: '20px', md: '32px' }} >
                             About BaoDao Talk
                         </Text>
                     </Box>
 
                     {/* "寶島..." 文字*/}
-                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb={AboutBaoDao_BP_pb}>
+                    <Box pl={{ base: '16px', md: '32px' }} pr='16px' pb={{ base: '12px', md: '20px' }}>
                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
                             "寶島 BaoDao" means "beautiful and rich island" which is another name represents Taiwan.
                         </Text>
                     </Box>
 
                     {/* "We promote Taiwanese..." 文字*/}
-                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb={AboutBaoDao_BP_pb}>
+                    <Box pl={{ base: '16px', md: '32px' }} pr='16px' pb={{ base: '12px', md: '20px' }}>
                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
                             We promote Taiwanese culture and Mandarin, offering professional Mandarin learning services to help people know more about Taiwan, and experience its unique culture.
                         </Text>
                     </Box>
 
                     {/* "Join us in embracing..." 文字*/}
-                    <Box pl={AboutBaoDao_BP_pl} pr='16px' pb={AboutBaoDao_BP_pb}>
+                    <Box pl={{ base: '16px', md: '32px' }} pr='16px' pb={{ base: '12px', md: '20px' }}>
                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='16px' >
                             Join us in embracing the beauty of Taiwan and sharing the spirit of "BaoDao" with the world.
                         </Text>
                     </Box>
 
-                    <Box pl={AboutBaoDao_BP_pl} display={{ base: 'none', md: 'block' }}>
+                    <Box pl={{ base: '16px', md: '32px' }} display={{ base: 'none', md: 'block' }}>
                         <Button w='300px' h='48px' bg='#7156E5' borderRadius='4px' >
                             <Text color='#FFF' fontFamily='Roboto' fontStyle='normal' fontWeight='700' fontSize='15px'>
                                 Start learning
@@ -704,17 +1754,17 @@ const Homepage = () => {
                     </Button>
                 </Center>
 
-            </Container>
+            </Container >
 
             {/* 底層 */}
-            <Container maxW={BreakPoint} bg='#F5F6F9' pt={Bottom_BP_pt} pl={Bottom_BP_pt} pb={Bottom_BP_pt} pr={Bottom_BP_pr} >
-                <Box display='flex' flexDirection={WellAndSelected_BP_FD}>
-                    <Box>
-                        <Image src={BaoDaoLOGO} alt="BaoDao Logo" />
+            < Container maxW={{ base: 'md', md: '100%' }} bg='#F5F6F9' pt={{ base: '16px', md: '40px' }} pl={{ base: '16px', md: '40px' }} pb={{ base: '16px', md: '40px' }} pr={{ base: '', md: '40px' }} >
+                <Box display='flex' flexDirection={{ base: 'column', md: 'row' }}>
+                    <Box width={{ base: '118px', md: '160px' }} height={{ base: '42px', md: '58px' }}>
+                        <Image src="https://static-dev-baodao.s3.ap-northeast-2.amazonaws.com/navbar-logo.png" alt="BaoDao Logo" />
                     </Box>
 
-                    <Box display='flex' flexDirection={WellAndSelected_BP_FD} marginLeft='auto'>
-                        <Box display='flex' pt={Bottom_BP_pt2} flexDirection='column' marginRight='78px'>
+                    <Box display='flex' flexDirection={{ base: 'column', md: 'row' }} marginLeft='auto'>
+                        <Box display='flex' pt={{ base: '16px', md: '' }} flexDirection='column' marginRight='78px'>
                             <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px' pb='8px'>
                                 Learn More
                             </Text>
@@ -730,7 +1780,7 @@ const Homepage = () => {
                             </Box>
                         </Box >
 
-                        <Box display='flex' pt={Bottom_BP_pt2} flexDirection='column' marginRight='78px'>
+                        <Box display='flex' pt={{ base: '16px', md: '' }} flexDirection='column' marginRight='78px'>
                             <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px' pb='8px'>
                                 Legal
                             </Text>
@@ -746,7 +1796,7 @@ const Homepage = () => {
                             </Box>
                         </Box >
 
-                        <Box display='flex' pt={Bottom_BP_pt2} flexDirection='column' pr={Bottom_BP_pr2}>
+                        <Box display='flex' pt={{ base: '16px', md: '' }} flexDirection='column' pr={{ base: '', md: '117px' }}>
                             <Box>
                                 <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='600' fontSize='16px' pb='8px'>
                                     Contacts
@@ -757,7 +1807,7 @@ const Homepage = () => {
                                     Shang Chin Education and Training Co., Ltd.
                                 </Text>
                             </Box>
-                            <Box w={Bottom_BP_W}>
+                            <Box w={{ base: '', md: '318px' }}>
                                 <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' pb='8px' opacity='0.8'>
                                     2 F., No. 250, Zhishan Rd., Xiping Vil., Xitun Dist., Taichung City 407036, Taiwan (R.O.C.)
                                 </Text>
@@ -773,14 +1823,14 @@ const Homepage = () => {
 
                 <Divider pt='20px' />
 
-                <Box display='flex' flexDirection={WellAndSelected_BP_FD} >
+                <Box display='flex' flexDirection={{ base: 'column', md: 'row' }} >
                     <Box display='flex' pt='20px' flexDirection='column'>
                         <Text color='#313030' fontFamily='Roboto' fontStyle='normal' fontWeight='400' fontSize='14px' opacity='0.8'>
                             © 2024 BaoDao Talk company Limited
                         </Text>
                     </Box>
 
-                    <Box as='button' display='flex' pt='20px' flexDirection='column' marginLeft={Bottom_BP_ML}>
+                    <Box as='button' display='flex' pt='20px' flexDirection='column' marginLeft={{ base: '', md: 'auto' }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                             <rect opacity="0.15" x="0.75" y="0.75" width="30.5" height="30.5" rx="15.25" stroke="#0A142F" stroke-width="1.5" />
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4003 22.1534V15.9991H13.1279V13.8782H14.4003V12.6048C14.4003 10.8746 15.1188 9.8457 17.1601 9.8457H18.8595V11.9668H17.7972C17.0026 11.9668 16.9501 12.2632 16.9501 12.8164L16.9472 13.8779H18.8715L18.6463 15.9988H16.9472V22.1534H14.4003Z" fill="#6F6E6E" />
@@ -789,7 +1839,7 @@ const Homepage = () => {
                 </Box>
 
 
-            </Container>
+            </Container >
         </>
     )
 }
